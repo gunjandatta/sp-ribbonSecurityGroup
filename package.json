@@ -1,0 +1,32 @@
+{
+  "name": "sp-ribbonSecurityGroup",
+  "version": "1.0.0",
+  "description": "Displays a ribbon button based on a security group in SharePoint 2013/Online (Classic)",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode=development",
+    "prod": "webpack --mode=production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gunjandatta/sp-ribbonSecurityGroup.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gunjandatta/sp-ribbonSecurityGroup/issues"
+  },
+  "homepage": "https://github.com/gunjandatta/sp-ribbonSecurityGroup#readme",
+  "dependencies": {
+    "gd-sprest-bs": "^1.9.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "babel-loader": "^8.0.5",
+    "ts-loader": "^5.3.3",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.0"
+  }
+}
