@@ -12,7 +12,7 @@ export const RibbonButton = () => {
     let isInSecurityGroup = (): PromiseLike<boolean> => {
         return new Promise((resolve, reject) => {
             // Get the target security group users
-            Web().SiteGroups(Strings.SecurityGroupName).Users().execute(users => {
+            Web().SiteGroups().getByName(Strings.SecurityGroupName).Users().execute(users => {
                 let isInGroup = false;
 
                 // If the group is public, the user can get the data but may not belong to the group
