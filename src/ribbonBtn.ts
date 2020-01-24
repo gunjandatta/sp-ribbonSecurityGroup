@@ -1,5 +1,4 @@
-import { ContextInfo, Helper, Types, Web } from "gd-sprest";
-import { Components } from "gd-sprest-bs";
+import { Components, ContextInfo, Helper, Types, Web } from "gd-sprest-bs";
 import Strings from "./strings";
 
 /**
@@ -44,53 +43,60 @@ export const RibbonButton = () => {
     };
 
     // See if the user belongs to the group
-    isInSecurityGroup().then(() => {
-        // Create the ribbon button
-        Helper.RibbonLink({
-            id: "GroupUsers",
-            title: "Group Users",
-            onClick: () => {
-                let el = document.createElement("div");
+    isInSecurityGroup().then(
+        // Success
+        () => {
+            // Create the ribbon button
+            Helper.RibbonLink({
+                id: "GroupUsers",
+                title: "Group Users",
+                onClick: () => {
+                    let el = document.createElement("div");
 
-                // See if the users exist
-                if (_users) {
-                    // Render the table
-                    Components.Table({
-                        el,
-                        rows: _users,
-                        columns: [
-                            {
-                                name: "Id",
-                                title: "Item Id"
-                            },
-                            {
-                                name: "Title",
-                                title: "Full Name"
-                            },
-                            {
-                                name: "Email",
-                                title: "Email"
-                            }
-                        ]
+                    // See if the users exist
+                    if (_users) {
+                        // Render the table
+                        Components.Table({
+                            el,
+                            rows: _users,
+                            columns: [
+                                {
+                                    name: "Id",
+                                    title: "Item Id"
+                                },
+                                {
+                                    name: "Title",
+                                    title: "Full Name"
+                                },
+                                {
+                                    name: "Email",
+                                    title: "Email"
+                                }
+                            ]
+                        });
+                    } else {
+                        // Display a message
+                        Components.Alert({
+                            el,
+                            header: "Access Denied",
+                            content: "You do not belong to the '" + Strings.SecurityGroupName + "' security group.",
+                            type: Components.AlertTypes.Danger
+                        }).el;
+                    }
+
+                    // Display the user's information in a modal dialog
+                    Helper.SP.ModalDialog.showModalDialog({
+                        title: "Security Group Users",
+                        html: el,
+                        height: 350,
+                        width: 500
                     });
-                } else {
-                    // Display a message
-                    Components.Alert({
-                        el,
-                        header: "Access Denied",
-                        content: "You do not belong to the '" + Strings.SecurityGroupName + "' security group.",
-                        type: Components.AlertTypes.Danger
-                    }).el;
                 }
-
-                // Display the user's information in a modal dialog
-                Helper.SP.ModalDialog.showModalDialog({
-                    title: "Security Group Users",
-                    html: el,
-                    height: 350,
-                    width: 500
-                });
-            }
-        });
-    });
+            });
+        },
+        // Error
+        () => {
+            // Do nothing, the user doesn't belong in the security group
+        }
+    );
 }

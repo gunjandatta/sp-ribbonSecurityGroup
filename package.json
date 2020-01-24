@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/gunjandatta/sp-ribbonSecurityGroup#readme",
   "dependencies": {
-    "gd-sprest-bs": "^1.9.2"
+    "gd-sprest-bs": "^2.8.2"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
