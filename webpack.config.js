@@ -6,17 +6,8 @@ module.exports = (env, argv) => {
 
     // Return the configuration
     return {
-        // Main project file
-        entry: [
-            "./node_modules/gd-sprest-bs/dist/gd-sprest-bs.min.js",
-            "./src/index.ts"
-        ],
-
-        // Ignore the gd-sprest libraries from the bundle
-        externals: {
-            "gd-sprest": "$REST",
-            "gd-sprest-bs": "$REST"
-        },
+        // Main project files
+        entry: "./src/index.ts",
 
         // Output information
         output: {
@@ -26,25 +17,37 @@ module.exports = (env, argv) => {
 
         // Resolve the file names
         resolve: {
-            extensions: [".js", ".ts"]
+            extensions: [".css", ".js", ".scss", ".ts"]
         },
 
         // Compiler Information
         module: {
             rules: [
+                // Handle SASS Files
+                {
+                    test: /\.s?css$/,
+                    use: [
+                        // Create the style nodes from the CommonJS code
+                        { loader: "style-loader" },
+                        // Translate css to CommonJS
+                        { loader: "css-loader" },
+                        // Compile sass to css
+                        { loader: "sass-loader" }
+                    ]
+                },
                 // Handle TypeScript Files
                 {
                     test: /\.tsx?$/,
                     exclude: /node_modules/,
                     use: [
-                        // Step 2 - Compile JavaScript ES6 to JavaScript Current Standards
+                        // Step 2 - Compile JS (ES5) to current standards
                         {
                             loader: "babel-loader",
                             options: {
                                 presets: ["@babel/preset-env"]
                             }
                         },
-                        // Step 1 - Compile TypeScript to JavaScript ES6
+                        // Step 1 - Compile TypeScript to JavaScript (ES5)
                         {
                             loader: "ts-loader"
                         }

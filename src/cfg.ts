@@ -1,4 +1,4 @@
-import { Helper, Web } from "gd-sprest";
+import { Helper, Web } from "gd-sprest-bs";
 import Strings from "./strings";
 
 /**

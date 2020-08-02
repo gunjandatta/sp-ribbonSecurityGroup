@@ -1,4 +1,4 @@
-import { Helper } from "gd-sprest";
+import { Helper } from "gd-sprest-bs";
 import { Configuration } from "./cfg";
 import { RibbonButton } from "./ribbonBtn";
 

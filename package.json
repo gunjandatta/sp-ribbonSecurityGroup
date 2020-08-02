@@ -19,14 +19,14 @@
   },
   "homepage": "https://github.com/gunjandatta/sp-ribbonSecurityGroup#readme",
   "dependencies": {
-    "gd-sprest-bs": "^3.2.0"
+    "gd-sprest-bs": "^5.4.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.0",
+    "@babel/core": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
     "babel-loader": "^8.1.0",
-    "ts-loader": "^6.2.2",
-    "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11"
+    "ts-loader": "^8.0.2",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
   }
 }
